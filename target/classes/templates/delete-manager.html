@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+<body>
+<form th:method="post" th:object="${manager}" th:action="@{/managers/delete-manager/{id}(id=${manager.id})}">
+    <div class="form-group" th:classappend="${#fields.hasErrors('firstName')}? 'has-danger'">
+        <label for="name">First Name</label>
+        <input type="text" class="form-control" id="name" th:field="*{firstName}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? 'has-danger'">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" th:field="*{lastName}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('club')}? 'has-danger'">
+        <label for="club">Club Name</label>
+        <input type="text" class="form-control" id="club" th:field="*{club}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('division')}? 'has-danger'">
+        <label for="division">Division</label>
+        <input type="text" class="form-control" id="division" th:field="*{division}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('age')}? 'has-danger'">
+        <label for="age">Age</label>
+        <input type="number" class="form-control" id="age" th:field="*{age}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('contract')}? 'has-danger'">
+        <label for="contract">Contract</label>
+        <input type="number" class="form-control" id="contract" th:field="*{contract}"/>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-4">
+            <a class="btn btn-default" th:href="@{/managers/show-manager}">Cancel</a>
+            <input value="Delete Manager" type="submit" class="btn btn-primary"/>
+        </div>
+    </div>
+</form>
+</body>
+</html>

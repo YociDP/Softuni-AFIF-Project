@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+<body>
+<table class="table table-hover w-100 mx-auto">
+    <tr class="row mx-auto">
+        <th class="col-md-3 text-center">Name</th>
+        <th class="col-md-2 text-center">Club Name</th>
+        <th class="col-md-2 text-center">Capacity</th>
+        <th class="col-md-3 text-center">Owner</th>
+    </tr>
+    <tbody>
+    <th:block th:each="pitch : ${pitches}">
+        <tr class="row mx-auto">
+            <td class="col-md-3 text-center" th:text="${pitch.name}"></td>
+            <td class="col-md-2 text-center" th:text="${pitch.club}"></td>
+            <td class="col-md-2 text-center" th:text="${pitch.capacity}"></td>
+            <td class="col-md-3 text-center" th:text="${pitch.owner.firstName} + ' ' + ${pitch.owner.lastName}">
+            </td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+<body>
+<form th:method="post" th:object="${player}" th:action="@{/players/edit-player/{id}(id=${player.id})}">
+    <div class="form-group" th:classappend="${#fields.hasErrors('firstName')}? 'has-danger'">
+        <label for="name">First Name</label>
+        <input type="text" class="form-control" id="name" th:field="*{firstName}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? 'has-danger'">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" th:field="*{lastName}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('overallRating')}? 'has-danger'">
+        <label for="overallRating">Overall Rating</label>
+        <input type="number" class="form-control" id="overallRating" th:field="*{overallRating}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('pace')}? 'has-danger'">
+        <label for="pace">Pace</label>
+        <input type="number" class="form-control" id="pace" th:field="*{pace}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('dribbling')}? 'has-danger'">
+        <label for="dribbling">Dribbling</label>
+        <input type="number" class="form-control" id="dribbling" th:field="*{dribbling}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('passing')}? 'has-danger'">
+        <label for="passing">Passing</label>
+        <input type="number" class="form-control" id="passing" th:field="*{passing}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('shooting')}? 'has-danger'">
+        <label for="shooting">Shooting</label>
+        <input type="number" class="form-control" id="shooting" th:field="*{shooting}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('defending')}? 'has-danger'">
+        <label for="defending">Defending</label>
+        <input type="number" class="form-control" id="defending" th:field="*{defending}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('physical')}? 'has-danger'">
+        <label for="physical">Physical</label>
+        <input type="number" class="form-control" id="physical" th:field="*{physical}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('position')}? 'has-danger'">
+        <label for="position">Position</label>
+        <input type="text" class="form-control" id="position" th:field="*{position}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('weakFoot')}? 'has-danger'">
+        <label for="weakFoot">Weak Foot</label>
+        <input type="number" class="form-control" id="weakFoot" th:field="*{weakFoot}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('skillMoves')}? 'has-danger'">
+        <label for="skillMoves">Skill Moves</label>
+        <input type="number" class="form-control" id="skillMoves" th:field="*{skillMoves}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('height')}? 'has-danger'">
+        <label for="height">Height</label>
+        <input type="number" class="form-control" id="height" th:field="*{height}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('price')}? 'has-danger'">
+        <label for="price">Price</label>
+        <input type="number" class="form-control" id="price" th:field="*{price}"/>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-4">
+            <a class="btn btn-default" th:href="@{/players/show-players}">Cancel</a>
+            <input value="Confirm" type="submit" class="btn btn-primary"/>
+        </div>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+<body>
+<header>
+    <th:block th:include="~{fragments/my-club-navbar}"></th:block>
+</header>
+<table class="table table-hover w-100 mx-auto">
+    <tr class="row mx-auto">
+        <th class="col-md-3 text-center">Name</th>
+        <th class="col-md-2 text-center">Founded On</th>
+        <th class="col-md-2 text-center">Budget</th>
+        <th class="col-md-3 text-center">Founder</th>
+    </tr>
+    <tbody>
+    <th:block th:each="club : ${clubs}">
+        <tr class="row mx-auto">
+            <td class="col-md-3 text-center" th:text="${club.name}"></td>
+            <td class="col-md-2 text-center" th:text="${club.foundedOn}"></td>
+            <td class="col-md-2 text-center" th:text="${club.budget}"></td>
+            <td class="col-md-3 text-center" th:text="${club.founder.firstName} + ' ' + ${club.founder.lastName}">
+            </td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

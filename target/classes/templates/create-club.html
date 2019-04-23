@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+<body>
+<form th:method="post" th:object="${clubAddBindingModel}" th:action="@{/clubs/create-club}">
+    <div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'has-danger'">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" th:field="*{name}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('foundedOn')}? 'has-danger'">
+        <label for="foundedOn">Founded On</label>
+        <input type="text" class="form-control" id="foundedOn" th:field="*{foundedOn}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('budget')}? 'has-danger'">
+        <label for="budget">Budget</label>
+        <input type="number" class="form-control" id="budget" th:field="*{budget}"/>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-4">
+            <a class="btn btn-default" th:href="@{/home}">Cancel</a>
+            <input value="Confirm" type="submit" class="btn btn-primary"/>
+        </div>
+    </div>
+</form>
+</body>
+</html>
