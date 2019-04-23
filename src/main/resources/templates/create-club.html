@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+<body>
+<header>
+    <th:block th:include="~{fragments/home-navbar}"></th:block>
+</header>
+<form th:method="post" class="w-25 mx-auto" th:object="${clubAddBindingModel}" th:action="@{/clubs/create-club}">
+    <div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'has-danger'">
+        <label for="name" class="font-weight-bold">Name</label>
+        <input type="text" class="form-control text-center" id="name" th:field="*{name}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('supportedClub')}? 'has-danger'">
+        <label for="foundedOn" class="font-weight-bold">Supported Club</label>
+        <input type="text" class="form-control text-center" id="foundedOn" th:field="*{supportedClub}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('budget')}? 'has-danger'">
+        <label for="budget" class="font-weight-bold">Budget</label>
+        <input type="number" class="form-control text-center" id="budget" th:field="*{budget}"/>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-4">
+            <a class="btn btn-default" th:href="@{/home}">Cancel</a>
+            <input value="Confirm" type="submit" class="btn btn-primary"/>
+        </div>
+    </div>
+</form>
+<ul th:if="${#fields.hasErrors('${clubAddBindingModel.*}')}">
+    <li th:each="err : ${#fields.errors('${clubAddBindingModel.*}')}" th:text="${err}"></li>
+</ul></body>
+</html>

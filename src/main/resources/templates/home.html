@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+<body onload="hideAll()">
+<header>
+    <th:block th:include="~{fragments/home-navbar}"></th:block>
+</header>
+<label><input onclick="showPitches()" type="radio" name="tables" value="pitches">Pitches</label>
+<label><input  onclick="showClubs()" type="radio" name="tables" value="clubs">Clubs</label>
+
+<script>
+    function hideAll(){
+        $('#visualizeText').show();
+        $('#pitchesTable').hide();
+        $('#clubsTable').hide();
+    }
+    function showPitches() {
+        $('#visualizeText').hide();
+        $('#pitchesTable').show();
+        $('#clubsTable').hide();
+    }
+    function showClubs() {
+        $('#visualizeText').hide();
+        $('#pitchesTable').hide();
+        $('#clubsTable').show();
+    }
+</script>
+<div th:id="visualizeText">
+    <hr/>
+    <h1 class="text-center" >Select what data you want to visualize!</h1>
+</div>
+<table class="table mt-3" th:id="pitchesTable">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Capacity</th>
+        <th scope="col">Club</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="pitch, iter : ${pitches}">
+        <tr>
+            <td scope="col" th:text="${iter.index + 1}"></td>
+            <td scope="col" th:text="${pitch.name}"></td>
+            <td scope="col" th:text="${pitch.capacity}"></td>
+            <td scope="col" th:text="${pitch.club}"></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+
+<table class="table mt-3" th:id="clubsTable">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Supported Club</th>
+        <th scope="col">Budget</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="club, iter : ${clubs}">
+        <tr>
+            <td scope="col" th:text="${iter.index + 1}"></td>
+            <td scope="col" th:text="${club.name}"></td>
+            <td scope="col" th:text="${club.supportedClub}"></td>
+            <td scope="col" th:text="${club.budget}"></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+<body>
+<header>
+    <th:block th:include="~{fragments/my-club-navbar}"></th:block>
+</header>
+<form th:method="post" class="w-25 mx-auto" th:object="${manager}" th:action="@{/managers/delete-manager/{id}(id=${manager.id})}">
+    <div class="form-group" th:classappend="${#fields.hasErrors('firstName')}? 'has-danger'">
+        <label for="name" class="font-weight-bold">First Name</label>
+        <input type="text" class="form-control text-center" id="name" th:field="*{firstName}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('lastName')}? 'has-danger'">
+        <label for="lastName" class="font-weight-bold">Last Name</label>
+        <input type="text" class="form-control text-center" id="lastName" th:field="*{lastName}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('club')}? 'has-danger'">
+        <label for="club" class="font-weight-bold">Club Name</label>
+        <input type="text" class="form-control text-center" id="club" th:field="*{club}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('division')}? 'has-danger'">
+        <label for="division" class="font-weight-bold">Division</label>
+        <input type="text" class="form-control text-center" id="division" th:field="*{division}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('age')}? 'has-danger'">
+        <label for="age" class="font-weight-bold">Age</label>
+        <input type="number" class="form-control text-center" id="age" th:field="*{age}"/>
+    </div>
+    <div class="form-group" th:classappend="${#fields.hasErrors('contract')}? 'has-danger'">
+        <label for="contract" class="font-weight-bold">Contract</label>
+        <input type="number" class="form-control text-center" id="contract" th:field="*{contract}"/>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-4">
+            <a class="btn btn-default" th:href="@{/managers/show-manager}">Cancel</a>
+            <input value="Delete Manager" type="submit" class="btn btn-primary"/>
+        </div>
+    </div>
+</form>
+</body>
+</html>

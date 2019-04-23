@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{fragments/head}"></th:block>
+</head>
+<body>
+<header>
+    <th:block th:include="~{fragments/my-club-navbar}"></th:block>
+</header>
+<th:block th:each="manager : ${managers}">
+    <table class="table table-hover w-75 mx-auto">
+        <tr class="row mx-auto">
+            <th class="col-md-3 text-center">Name</th>
+            <th class="col-md-2 text-center">Rating</th>
+            <th class="col-md-3 text-center">Actions</th>
+        </tr>
+        <tr class="row mx-auto">
+            <td class="col-md-3" th:text="${manager.firstName} + ${manager.lastName}"></td>
+            <td class="col-md-2" th:text="${manager.club}"></td>
+            <td class="col-md-3">
+                <a th:href="@{/managers/manager-details/{id}(id = ${manager.id})}" class="btn btn-secondary font-weight-bold text-white">Details</a>
+                <a th:href="@{/managers/manager-edit/{id}(id=${manager.id})}" class="btn btn-success font-weight-bold text-white">Edit</a>
+                <a th:href="@{/managers/delete-manager/{id}(id=${manager.id})}" class="btn btn-success font-weight-bold text-white">Delete</a>
+            </td>
+        </tr>
+    </table>
+</th:block>
+</body>
+</html>
